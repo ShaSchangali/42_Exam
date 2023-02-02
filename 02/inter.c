@@ -1,37 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotone.c                                           :+:      :+:    :+:   */
+/*   inter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sschanga <sschanga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 22:40:09 by sschanga          #+#    #+#             */
-/*   Updated: 2023/02/01 22:03:14 by sschanga         ###   ########.fr       */
+/*   Created: 2023/02/01 18:54:05 by sschanga          #+#    #+#             */
+/*   Updated: 2023/02/01 19:02:55 by sschanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	rotone(char *str)
+int iter(char *str, char c, int len)
 {
-	int	i;
+	int i;
 
 	i = 0;
-	while(str[i] != '\0')
+	while(str[i] && (i < len || len == -1))
 	{
-		if((str[i] >= 'A' && str[i] <= 'Y' ) || (str[i] >= 'a' && str[i] <= 'y'))
-			str[i] += 1;
-		else if (str[i] == 'Z' || str[i] == 'z')
-			str[i] -= 25;
-		write(1, (str + i), 1);
+		if (str[i] == c)
+			return (1);
 		i++;
 	}
+	return (0);
 }
 
 int	main(int argc, char **argv)
 {
-	if (argc == 2)
-		rotone(argv[1]);
+	int	i;
+
+	if (argc == 3)
+	{
+		i = 0;
+		while(argv[1][i])
+		{
+			if (!iter(argv[1], argv[1][i], i) && iter(argv[2], argv[1][i], -1))
+				write(1, &argv[1][i], 1);
+			i++;
+		}
+	}
 	write(1, "\n", 1);
 	return (0);
 }

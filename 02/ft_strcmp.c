@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotone.c                                           :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sschanga <sschanga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 22:40:09 by sschanga          #+#    #+#             */
-/*   Updated: 2023/02/01 22:03:14 by sschanga         ###   ########.fr       */
+/*   Created: 2023/02/01 23:38:46 by sschanga          #+#    #+#             */
+/*   Updated: 2023/02/01 23:59:03 by sschanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	rotone(char *str)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
-	while(str[i] != '\0')
+	while(s1[i] == s2[i])
 	{
-		if((str[i] >= 'A' && str[i] <= 'Y' ) || (str[i] >= 'a' && str[i] <= 'y'))
-			str[i] += 1;
-		else if (str[i] == 'Z' || str[i] == 'z')
-			str[i] -= 25;
-		write(1, (str + i), 1);
+		if (s1[i] == '\0' && s2[i] == '\0')
+			return (0);
 		i++;
 	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-int	main(int argc, char **argv)
+
+int main(void)
 {
-	if (argc == 2)
-		rotone(argv[1]);
-	write(1, "\n", 1);
+	char s1[12] = "hello";
+	char s2[] = "Bella";
+	printf("%d", ft_strcmp(s1, s2));
 	return (0);
 }
