@@ -1,44 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hex.c                                        :+:      :+:    :+:   */
+/*   epur_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sschanga <sschanga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/05 18:36:54 by sschanga          #+#    #+#             */
-/*   Updated: 2023/02/05 18:52:51 by sschanga         ###   ########.fr       */
+/*   Created: 2023/02/05 00:48:08 by sschanga          #+#    #+#             */
+/*   Updated: 2023/02/05 00:54:32 by sschanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_atoi(char *str)
+int main(int argc, char const *argv[])
 {
 	int i;
-	int n;
+	int flg;
 
-	i = 0;
-	n = 0;
-	while(str[i] != '\0')
-	{
-		n = n * 10 + str[i] - '0';
-		i++;
-	}
-	return (n);
-}
-
-void	print_hex(int n)
-{
-	char hex_digit[] = "0123456789abcdef";
-	if(n >= 16)
-		print_hex(n / 16);
-	write(1, &hex_digit[n % 16], 1);
-}
-
-int main(int argc, char **argv)
-{
 	if (argc == 2)
-		print_hex(ft_atoi(argv[1]));
+	{
+		i = 0;
+		while (argv[1][i] == ' ' || argv[1][i] == '\t')
+			i++;
+		while (argv[1][i])
+		{
+			if (argv[1][i] == ' ' || argv[1][i] == '\t')
+				flg = 1;
+			if (!(argv[1][i] == ' ' || argv[1][i] == '\t'))
+			{
+				if (flg == 1)
+					write(1, " ", 1);
+				flg = 0;
+				write(1, &argv[1][i], 1);
+			}
+			i++;
+		}
+	}
 	write(1, "\n", 1);
 	return (0);
 }
+

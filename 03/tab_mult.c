@@ -24,14 +24,19 @@ void	ft_putnbr(int n)
 	ft_putchar(n % 10 + '0');
 }
 
-int ft_atoi_valid(char *str)
+int ft_atoi(char *str)
 {
-	int r;
+	int i;
+	int n;
 	
-	r = 0;
-	while(*str >= '0' && *str <= '9')
-		r = r * 10 + *str++ - '0';
-	return (r);
+	n = 0;
+	i = 0;
+	while(str[i] >= '0' && str[i] <= '9')
+	{
+		n = n * 10 + str[i] - '0';
+		i++;
+	}
+	return (n);
 }
 
 void	tab_mult(int n)
@@ -54,7 +59,7 @@ void	tab_mult(int n)
 int	main(int argc, char **argv)
 {
 	if(argc == 2)
-		tab_mult(ft_atoi_valid(argv[1]));
+		tab_mult(ft_atoi(argv[1]));
 	else 
 		write(1, "\n", 1);
 	return (0);
