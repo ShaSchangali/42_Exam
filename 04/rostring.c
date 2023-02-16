@@ -40,26 +40,19 @@ int	main(int argc, char **argv)
 			write(1, &argv[1][i], 1);
 			i++;
 		}
-<<<<<<< HEAD
-=======
 		if(flag == 1)
 			write(1, " ", 1);
->>>>>>> c049a1fc280b83d62d1c013f0c35cebe32b82470
 		while(start < end)
 		{
 			write(1, &argv[1][start], 1);
 			start++;
 		}
-<<<<<<< HEAD
+
 		if(flag == 1)
 			write(1, " ", 1);
 	}
 	write(1, "\n", 1);
 	return(0);
 }
-=======
-	}
-	write(1, "\n", 1);
-	return(0);
-}
->>>>>>> c049a1fc280b83d62d1c013f0c35cebe32b82470
+
+
