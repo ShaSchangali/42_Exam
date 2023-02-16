@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   sort_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sschanga <sschanga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 20:03:40 by sschanga          #+#    #+#             */
-/*   Updated: 2023/01/26 23:47:58 by sschanga         ###   ########.fr       */
+/*   Created: 2023/02/15 21:22:20 by sschanga          #+#    #+#             */
+/*   Updated: 2023/02/15 21:48:55 by sschanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_swap(int *a, int *b)
+#include <unistd.h>
+#include "list.h"
+
+t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
 {
-	int	tmp;
+	t_list *tmp;
+	int swap;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	tmp = lst;	
+	while(lst->next != NULL)
+	{
+		if(((*cmp)(lst->data, lst->next->data)) == 0)
+		{
+			swap = lst->data;
+			lst->data = lst->next->data;
+			lst->next->data = swap;
+			lst = tmp;
+		}
+		else 
+			lst = lst->next;
+	}
+	lst = tmp;
+	return(lst);
 }
-
-

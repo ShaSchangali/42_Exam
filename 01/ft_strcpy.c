@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 char *ft_strcpy(char *dst, char *src)
 {
 	int	i; 
@@ -26,6 +24,8 @@ char *ft_strcpy(char *dst, char *src)
 	return (dst);
 }
 
+/*
+#include <stdio.h>
 
 int	main(void)
 {
@@ -36,3 +36,4 @@ int	main(void)
 	ft_strcpy(dst, src);
 	printf("%s", dst);
 }
+*/

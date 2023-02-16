@@ -1,36 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   first_word.c                                       :+:      :+:    :+:   */
+/*   wd_match.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sschanga <sschanga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 23:09:08 by sschanga          #+#    #+#             */
-/*   Updated: 2023/01/26 23:26:15 by sschanga         ###   ########.fr       */
+/*   Created: 2023/02/05 00:48:08 by sschanga          #+#    #+#             */
+/*   Updated: 2023/02/05 00:54:32 by sschanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_isspace(int i)
+void ft_putstr(char const *str)
 {
-	if (i == '\t' || i == '\r' || i == '\v' || i == '\f' 
-		|| i == '\n' || i == ' ')
-		return (1);
-	return (0);
+	int i;
+    
+    i  = 0;
+	while (str[i])
+		write(1, &str[i++], 1);
 }
 
-int main (int argc, char **argv)
+int	main(int argc, char const *argv[])
 {
-	int	i;
+	int i; 
+	int j;  
 
-	i = 0;
-	if (argc == 2)
+    i = 0;
+    j = 0;
+	if (argc == 3)
 	{
-		while(ft_isspace((argv[1][i])))
-			i++;
-		while(!(ft_isspace(argv[1][i])) && argv[1][i])	
-			write(1, &argv[1][i++], 1);
+		while (argv[2][j])
+        {
+			if (argv[2][j++] == argv[1][i])
+            {
+				i++;
+                j++;
+            }
+        }
+		if (!argv[1][i])
+			ft_putstr(argv[1]);
 	}
 	write(1, "\n", 1);
 	return (0);

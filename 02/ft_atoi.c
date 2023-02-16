@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 int	ft_atoi(char *str)
 {
 		int i;
@@ -22,21 +20,22 @@ int	ft_atoi(char *str)
 		res = 0;
 		i = 0;
 		while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-			str++;
+			i++;
 		if (str[i] == '-' || str[i] == '+')
 		{
 			if (str[i] == '-')
 				sign = -1;
-			str++;
+			i++;
 		}
 		while (str[i] >= '0' && str[i] <= '9')
 		{
 			res = res * 10 + str[i] - '0';
-			str++;
+			i++;
 		}
 		return (sign * res);
 }
 
+#include <stdio.h>
 int main()
 {
 	char a[] = "    \n\n\v\f\r\t -5234AAAgreghrsth";

@@ -19,40 +19,40 @@ int absoulute_nbr(int nbr)
 	return (nbr);
 }
 
-int	get_len(int nbr)
+int	get_len(int n)
 {
 	int i;
 
 	i = 0;
-	if(nbr <= 0)
+	if(n <= 0)
 		i++;
-	while(nbr != 0)
+	while(n != 0)
 	{
 		i++;
-		nbr = nbr / 10;
+		n = n / 10;
 	}
 	return (i);
 }
 
-char	*ft_itoa(int nbr)
+char	*ft_itoa(int n)
 {
 	int i;
 	char *res;
 	
-	i = get_len(nbr);
+	i = get_len(n);
 	res = (char*)malloc(sizeof(char) * (i + 1));
 	res[i] = '\0';
 
-	if(nbr < 0)
+	if(n < 0)
 		res[0] = '-';
-	else if (nbr == 0)
+	else if (n == 0)
 		res[0] = '0';
 
-	while(nbr != 0)
+	while(n != 0)
 	{
 		i--;
-		res[i] = absoulute_nbr(nbr % 10) + '0';
-		nbr = nbr / 10;
+		res[i] = absoulute_nbr(n % 10) + '0';
+		n = n / 10;
 	}
 	return (res);
 }

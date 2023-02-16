@@ -17,8 +17,8 @@
 
 char	*ft_strdub(char *src)
 {
-	int	len;
 	char *dst;
+	int	len;
 	int i;
 
 	len = 0;
