@@ -34,3 +34,7 @@ t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
 	lst = tmp;
 	return(lst);
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> c049a1fc280b83d62d1c013f0c35cebe32b82470
